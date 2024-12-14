@@ -26,30 +26,30 @@
 							<p class="major">Cars Ready for Purchase </p>
 							<p>
 <?php
-include("connect.php");
-$result = mysqli_query($linkID, "SELECT VEHICLE.VEHICLE_ID,BRAND.BRAND_NAME,MODEL.MODEL_NAME, VEHICLE.YEAR, VEHICLE.NUMBER_OF_MILES, VEHICLE.BATTERY_RANGE, VEHICLE.HORSEPOWER, VEHICLE.COLOR, VEHICLE.PRICE, VEHICLE.ELIGIBILITY_EV_SUBSIDY, VEHICLE.IMAGES, ZIP_CODE.CITY, ZIP_CODE.STATE
+	include("connect.php");
+		$result = mysqli_query($linkID, "SELECT VEHICLE.VEHICLE_ID,BRAND.BRAND_NAME,MODEL.MODEL_NAME, VEHICLE.YEAR, VEHICLE.NUMBER_OF_MILES, VEHICLE.BATTERY_RANGE, VEHICLE.HORSEPOWER, VEHICLE.COLOR, VEHICLE.PRICE, VEHICLE.ELIGIBILITY_EV_SUBSIDY, VEHICLE.IMAGES, ZIP_CODE.CITY, ZIP_CODE.STATE
 		FROM VEHICLE
 		JOIN  MODEL ON VEHICLE.MODEL_ID = MODEL.MODEL_ID
 		JOIN BRAND ON VEHICLE.BRAND_ID = BRAND.BRAND_ID
 		JOIN ZIP_CODE ON VEHICLE.ZIP_CODE = ZIP_CODE.ZIP_CODE");
 		if (mysqli_num_rows($result) > 0) {
-			echo "<table border='1'>";
-			echo "<tr><th>Vehicle ID</th><th>Brand</th><th>Model</th><th>Image</th></tr>";
+			print "<table border='1'>";
+			print "<tr><th>Vehicle ID</th><th>Brand</th><th>Model</th><th>Image</th></tr>";
 			while ($row = mysqli_fetch_assoc($result)) {
 				$imageUrl = $row['IMAGES'];
-				echo "<tr>";
-				echo "<td>{$row['VEHICLE_ID']}</td>";
-				echo "<td>{$row['BRAND_NAME']}</td>";
+				print "<tr>";
+				print "<td>{$row['VEHICLE_ID']}</td>";
+				print "<td>{$row['BRAND_NAME']}</td>";
 				echo "<td>{$row['MODEL_NAME']}</td>";
-				echo "<td><img src='{$imageUrl}' alt='{$row['MODEL_NAME']}' class='img-fluid'></td>";
-				echo "</tr>";
+				print "<td><img src='{$imageUrl}' alt='{$row['MODEL_NAME']}' class='img-fluid'></td>";
+				print "</tr>";
 			}
-			echo "</table>";
+			print "</table>";
 		} else {
-			echo "No vehicles found.";
+			print "No vehicles found.";
 		}
-mysqli_close($linkID);
-?>
+		mysqli_close($linkID);
+	?>
 </p>
 
 </div>
