@@ -22,22 +22,24 @@
 				<!-- Banner -->
 					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 						<div class="content">
-							<h1>Section Name </h1>
-							<p class="major">If you wish to explain something </p>
+							<h1> Search for Electric Cars here </h1>
+							<p class="major">Enter the car details </p>
 							<p>
 							<form action="results.php" method="post" name="form1" id="form1">
 							<table width="500" border="1">
 								<tr>
-								<td><label for="firstname">First Name:</label>
-								<input type="text" name="firstname" id="firstname"></td>
+								<td><label for="search_term">Search for details like the brand, model or year </label>
+								<input type="text" name="search_term" id="search_term"></td>
 								</tr>
-							
-								<tr>
-								<td><input type="submit" name="submit" id="submit" value="Submit"></td>
-								</tr>
+
 							</table>
 							</form>
 							</p>
+							<tr>
+								<input type="submit" value="Search">
+								<input type="reset" value="Reset">
+								</tr>
+
 							</div>
 						<div class="image">
 							<img src="images/banner.jpg" alt="" />
