@@ -22,18 +22,32 @@
 				<!-- Banner -->
 					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 						<div class="content">
-							<h1>Section Name </h1>
-							<p class="major">If you wish to explain something </p>
+							<h1> Edison Volt </h1>
+							<p class="major">Cars Ready for Purchase </p>
 							<p>
 <?php
 include("connect.php");
-$result = mysqli_query($linkID, "SELECT * FROM address");
-print("<table>");
-print("<tr> <th> First Name </th> <th> Last Name </th> <th> Street </th> </tr>");
-while($row = mysqli_fetch_array($result)) {
-	print("<tr> <td> $row[firstname] </td> <td> $row[lastname] </td> <td> $row[street] </td></tr>");
-}
-print("</table>");
+$result = mysqli_query($linkID, "SELECT VEHICLE.VEHICLE_ID,BRAND.BRAND_NAME,MODEL.MODEL_NAME, VEHICLE.YEAR, VEHICLE.NUMBER_OF_MILES, VEHICLE.BATTERY_RANGE, VEHICLE.HORSEPOWER, VEHICLE.COLOR, VEHICLE.PRICE, VEHICLE.ELIGIBILITY_EV_SUBSIDY, VEHICLE.IMAGES, ZIP_CODE.CITY, ZIP_CODE.STATE
+		FROM VEHICLE
+		JOIN  MODEL ON VEHICLE.MODEL_ID = MODEL.MODEL_ID
+		JOIN BRAND ON VEHICLE.BRAND_ID = BRAND.BRAND_ID
+		JOIN ZIP_CODE ON VEHICLE.ZIP_CODE = ZIP_CODE.ZIP_CODE");
+		if (mysqli_num_rows($result) > 0) {
+			echo "<table border='1'>";
+			echo "<tr><th>Vehicle ID</th><th>Brand</th><th>Model</th><th>Image</th></tr>";
+			while ($row = mysqli_fetch_assoc($result)) {
+				$imageUrl = $row['IMAGES'];
+				echo "<tr>";
+				echo "<td>{$row['VEHICLE_ID']}</td>";
+				echo "<td>{$row['BRAND_NAME']}</td>";
+				echo "<td>{$row['MODEL_NAME']}</td>";
+				echo "<td><img src='{$imageUrl}' alt='{$row['MODEL_NAME']}' class='img-fluid'></td>";
+				echo "</tr>";
+			}
+			echo "</table>";
+		} else {
+			echo "No vehicles found.";
+		}
 mysqli_close($linkID);
 ?>
 </p>
