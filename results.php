@@ -10,6 +10,7 @@
 <body class="is-preload">
 
 <!-- Wrapper -->
+<!-- Atanas was here -->
 <div id="wrapper" class="divided">
 
     <!-- Banner -->
