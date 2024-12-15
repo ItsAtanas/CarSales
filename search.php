@@ -31,14 +31,14 @@
 								<td><label for="search_term">Search for details like the brand, model or year </label>
 								<input type="text" name="search_term" id="search_term"></td>
 								</tr>
-
 							</table>
-							</form>
-							</p>
-							<tr>
+								<tr>
 								<input type="submit" value="Search">
 								<input type="reset" value="Reset">
 								</tr>
+							</form>
+							</p>
+
 
 							</div>
 						<div class="image">
