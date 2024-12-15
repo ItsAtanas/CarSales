@@ -20,8 +20,8 @@
             <p class="major">Enter the name of your electric car</p>
             
             <form action="results.php" method="post">
-                <label for="search_term">Search by brand, model, year</label>
-                <input type="text" id="search_term" name="search_term" placeholder="Enter your electric car brand, model or year">
+                <label for="search_term">Search by brand, model, year, zip code</label>
+                <input type="text" id="search_term" name="search_term" placeholder="Enter your electric car brand, model, year or zipcode">
                 <input type="submit" value="Search">
                 <input type="reset" value="Reset">
             </form>
@@ -39,18 +39,18 @@
 				}
 
 				// Prepare and execute the SQL query
-				$result = mysqli_query($linkID, "SELECT VEHICLE.VEHICLE_ID,BRAND.BRAND_NAME,MODEL.MODEL_NAME, VEHICLE.YEAR, VEHICLE.NUMBER_OF_MILES, VEHICLE.BATTERY_RANGE,  VEHICLE.COLOR, VEHICLE.PRICE,  VEHICLE.IMAGES, ZIP_CODE.CITY, ZIP_CODE.STATE
+				$result = mysqli_query($linkID, "SELECT VEHICLE.VEHICLE_ID,BRAND.BRAND_NAME,MODEL.MODEL_NAME, VEHICLE.YEAR, VEHICLE.NUMBER_OF_MILES, VEHICLE.BATTERY_RANGE,  VEHICLE.COLOR, VEHICLE.PRICE,  VEHICLE.IMAGES, ZIP_CODE.CITY, ZIP_CODE.STATE, ZIP_CODE.ZIP_CODE
 FROM VEHICLE
 JOIN  MODEL ON VEHICLE.MODEL_ID = MODEL.MODEL_ID
 JOIN BRAND ON VEHICLE.BRAND_ID = BRAND.BRAND_ID
 JOIN ZIP_CODE ON VEHICLE.ZIP_CODE = ZIP_CODE.ZIP_CODE
-WHERE BRAND.BRAND_NAME LIKE '$search_term' OR MODEL.MODEL_NAME LIKE '$search_term' OR VEHICLE.YEAR LIKE '$search_term'");
+WHERE BRAND.BRAND_NAME LIKE '$search_term' OR MODEL.MODEL_NAME LIKE '$search_term' OR VEHICLE.YEAR LIKE '$search_term' OR ZIP_CODE.ZIP_CODE LIKE '$search_term'");
 
 				if (mysqli_num_rows($result) > 0) {
 					print "<table>";
-					print "<tr> <th> Vehicle ID </th> <th> Brand </th> <th> Model </th> <th> Year </th><th> Color </th> <th> Price </th><th> Image </th></tr>";
+					print "<tr> <th> Vehicle ID </th> <th> Brand </th> <th> Model </th> <th> Year </th><th> Color </th> <th> Price </th><th> Zip Code </th><th> Image </th></tr>";
 					while($row = mysqli_fetch_assoc($result)) {
-						print "<tr> <td> $row[VEHICLE_ID] </td> <td> $row[BRAND_NAME] </td> <td> $row[MODEL_NAME] </td> <td> $row[YEAR] </td> <td> $row[COLOR] </td><td> $row[PRICE] </td><td><img src='{$row['IMAGES']}' alt='{$row['MODEL_NAME']}' style='width:100px; height:auto;'></td></tr>";
+						print "<tr> <td> $row[VEHICLE_ID] </td> <td> $row[BRAND_NAME] </td> <td> $row[MODEL_NAME] </td> <td> $row[YEAR] </td> <td> $row[COLOR] </td><td> $row[PRICE] </td><td> $row[ZIP_CODE] </td><td><img src='{$row['IMAGES']}' alt='{$row['MODEL_NAME']}' style='width:100px; height:auto;'></td></tr>";
 					}
 					print "</table>";
 				} else {
@@ -58,10 +58,7 @@ WHERE BRAND.BRAND_NAME LIKE '$search_term' OR MODEL.MODEL_NAME LIKE '$search_ter
 				}
 
 				mysqli_close($linkID);
-
-				mysqli_close($linkID);
 			?>
-
             </p>
         </div>
         <div class="image">
