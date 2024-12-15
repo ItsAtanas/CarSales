@@ -8,11 +8,14 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
-
+<div>
+        <a href="/project/template.php">Template</a>
+        <a href="/project/search.php">Search</a>
+        <a href="/project/results.php">Results</a>
+    </div>
 <!-- Wrapper -->
 <!-- Atanas was here -->
 <div id="wrapper" class="divided">
-
     <!-- Banner -->
     <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
         <div class="content">
@@ -28,7 +31,7 @@
 
             <p>
 			<?php
-            				include("connect.php");
+                include("connect.php");
 
 				$search_term = '%'; // Default value if no input is provided
 
@@ -40,11 +43,11 @@
 
 				// Prepare and execute the SQL query
 				$result = mysqli_query($linkID, "SELECT VEHICLE.VEHICLE_ID,BRAND.BRAND_NAME,MODEL.MODEL_NAME, VEHICLE.YEAR, VEHICLE.NUMBER_OF_MILES, VEHICLE.BATTERY_RANGE,  VEHICLE.COLOR, VEHICLE.PRICE,  VEHICLE.IMAGES, ZIP_CODE.CITY, ZIP_CODE.STATE, ZIP_CODE.ZIP_CODE
-FROM VEHICLE
-JOIN  MODEL ON VEHICLE.MODEL_ID = MODEL.MODEL_ID
-JOIN BRAND ON VEHICLE.BRAND_ID = BRAND.BRAND_ID
-JOIN ZIP_CODE ON VEHICLE.ZIP_CODE = ZIP_CODE.ZIP_CODE
-WHERE BRAND.BRAND_NAME LIKE '$search_term' OR MODEL.MODEL_NAME LIKE '$search_term' OR VEHICLE.YEAR LIKE '$search_term' OR ZIP_CODE.ZIP_CODE LIKE '$search_term'");
+                FROM VEHICLE
+                JOIN  MODEL ON VEHICLE.MODEL_ID = MODEL.MODEL_ID
+                JOIN BRAND ON VEHICLE.BRAND_ID = BRAND.BRAND_ID
+                JOIN ZIP_CODE ON VEHICLE.ZIP_CODE = ZIP_CODE.ZIP_CODE
+                WHERE BRAND.BRAND_NAME LIKE '$search_term' OR MODEL.MODEL_NAME LIKE '$search_term' OR VEHICLE.YEAR LIKE '$search_term' OR ZIP_CODE.ZIP_CODE LIKE '$search_term'");
 
 				if (mysqli_num_rows($result) > 0) {
 					print "<table>";

@@ -15,7 +15,11 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-
+    <div>
+		<a href="/project/template.php">Template</a>
+        <a href="/project/search.php">Search</a>
+        <a href="/project/results.php">Results</a>
+    </div>
 		<!-- Wrapper -->
 			<div id="wrapper" class="divided">
 
