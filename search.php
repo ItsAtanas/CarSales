@@ -8,7 +8,7 @@
 -->
 <html>
 	<head>
-		<title>~Your Company Names Goes Here ~</title>
+		<title>~Edison Volt ~</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -28,7 +28,7 @@
 							<form action="results.php" method="post" name="form1" id="form1">
 							<table width="500" border="1">
 								<tr>
-								<td><label for="search_term">Search for details like the brand, model or year </label>
+								<td><label for="search_term">Search for details like the brand, model, year or zip code</label>
 								<input type="text" name="search_term" id="search_term"></td>
 								</tr>
 							</table>
