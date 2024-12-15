@@ -8,11 +8,12 @@
 -->
 <html>
 	<head>
-		<title>~Edison Volt ~</title>
+		<title>~Your Company Names Goes Here ~</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
 	</head>
 	<body class="is-preload">
     <!-- Menu -->
@@ -31,28 +32,38 @@
 				<!-- Banner -->
 					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 						<div class="content">
-							<h1> Search for Electric Cars here </h1>
-							<p class="major">Enter the car details </p>
+							<h1 class="temp-title"> Edison Volt </h1>
+							<p class="major temp-text">Cars Ready for Purchase </p>
 							<p>
-							<form action="results.php" method="post" name="form1" id="form1">
-							<table width="500" border="1">
-								<tr>
-								<td><label for="search_term">Search for details like the brand, model, year or zip code</label>
-								<input type="text" name="search_term" id="search_term"></td>
-								</tr>
-							</table>
-								<tr>
-								<input type="submit" value="Search">
-								<input type="reset" value="Reset">
-								</tr>
-							</form>
+								<?php
+								include("connect.php");
+								$result = mysqli_query($linkID, "SELECT VEHICLE.VEHICLE_ID, BRAND.BRAND_NAME, MODEL.MODEL_NAME, VEHICLE.YEAR, VEHICLE.NUMBER_OF_MILES, VEHICLE.BATTERY_RANGE, VEHICLE.HORSEPOWER, VEHICLE.COLOR, VEHICLE.PRICE, VEHICLE.ELIGIBILITY_EV_SUBSIDY, VEHICLE.IMAGES, ZIP_CODE.CITY, ZIP_CODE.STATE
+								FROM VEHICLE
+								JOIN MODEL ON VEHICLE.MODEL_ID = MODEL.MODEL_ID
+								JOIN BRAND ON VEHICLE.BRAND_ID = BRAND.BRAND_ID
+								JOIN ZIP_CODE ON VEHICLE.ZIP_CODE = ZIP_CODE.ZIP_CODE");
+
+								if (mysqli_num_rows($result) > 0) {
+									print "<table border='1'>";
+									print "<tr><th>Vehicle ID</th><th>Brand</th><th>Model</th><th>Image</th><th>Price</th></tr>"; // Added <th> for Price
+									while ($row = mysqli_fetch_assoc($result)) {
+										$imageUrl = $row['IMAGES'];
+										print "<tr>";
+										print "<td>{$row['VEHICLE_ID']}</td>";
+										print "<td>{$row['BRAND_NAME']}</td>";
+										print "<td>{$row['MODEL_NAME']}</td>";
+										print "<td><img src='{$imageUrl}' alt='{$row['MODEL_NAME']}' class='img-fluid vehicle-image'></td>";
+										print "<td>\${$row['PRICE']}</td>"; // Added <td> for Price
+										print "</tr>";
+									}
+									print "</table>";
+								} else {
+									print "No vehicles found.";
+								}
+								mysqli_close($linkID);
+								?>
 							</p>
-
-
 							</div>
-						<div class="image">
-							<img src="images/banner.jpg" alt="" />
-						</div>
 					</section>
 
 							<footer class="footer-color wrapper style1 align-center">

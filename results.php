@@ -8,13 +8,18 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
-<div>
-        <a href="/project/template.php">Template</a>
-        <a href="/project/search.php">Search</a>
-        <a href="/project/results.php">Results</a>
-    </div>
+    <!-- Menu -->
+	<div>
+		<div class="custom-navbar-icon d-flex justify-content-center align-items-center">
+			<a href="/project/index.php"><img src="images/Edison-Volt.png" alt="Logo" style="width: 150px; height: auto; margin-right: 10px;"></a>
+		</div>
+		<div class="custom-navbar d-flex justify-content-center align-items-center">
+			<a href="/project/index.php" class="mx-2">Template</a>
+			<a href="/project/search.php" class="mx-2">Search</a>
+		</div>
+	</div>
 <!-- Wrapper -->
-<!-- Atanas was here -->
+
 <div id="wrapper" class="divided">
     <!-- Banner -->
     <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
@@ -64,12 +69,10 @@
 			?>
             </p>
         </div>
-        <div class="image">
-            <img src="images/banner.jpg" alt="" />
-        </div>
+
     </section>
 
-    <footer class="wrapper style1 align-center">
+    <footer class="footer-color wrapper style1 align-center">
         <div class="inner">
             <ul class="icons">
                 <li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
@@ -78,7 +81,7 @@
                 <li><a href="#" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
                 <li><a href="#" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
             </ul>
-            <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            <p style="color: white; margin-bottom: 0px;" >&copy; Edison Volt.</p>
         </div>
     </footer>
 
