@@ -21,7 +21,7 @@
 			<a href="/project/"><img src="images/Edison-Volt.png" alt="Logo" style="width: 150px; height: auto; margin-right: 10px;"></a>
 		</div>
 		<div class="custom-navbar d-flex justify-content-center align-items-center">
-			<a href="/project/" class="mx-2">Template</a>
+			<a href="/project/" class="mx-2">Home</a>
 			<a href="/project/search.php" class="mx-2">Search</a>
 		</div>
 	</div>
